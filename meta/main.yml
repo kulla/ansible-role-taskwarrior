@@ -1,0 +1,27 @@
+galaxy_info:
+  author: Stephan Kulla
+  description: Installs and configure taskwarrior
+  company: ~
+  license: CC0
+
+  min_ansible_version: 2.4
+
+  platfroms:
+    - name: Ubuntu
+      versions:
+        - artful
+        - bionic
+        - comsmic
+    - name: Debian
+      versions:
+        - stretch
+
+  galaxy_tags:
+    - taskwarrior
+    - system
+    - tasksh
+    - commandline
+    - taskmanagement
+    - projectmanagement
+
+  dependencies: []
