@@ -1,7 +1,7 @@
 taskwarrior
 ===========
 
-Installs the task management tool [taskwarrior](https://taskwarrior.org/).
+Installs and configures the task management tool [taskwarrior](https://taskwarrior.org/).
 
 Role Variables
 --------------
