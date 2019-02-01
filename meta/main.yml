@@ -1,7 +1,7 @@
 galaxy_info:
   author: Stephan Kulla
   role_name: taskwarrior
-  description: Installs and configure taskwarrior
+  description: Installs and configures taskwarrior
   company: ~
   license: CC0
 
