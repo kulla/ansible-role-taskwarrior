@@ -1,0 +1,7 @@
+data.location={{ taskwarrior_data_location }}
+
+# ISO 8601 defines Monday as the first day of the week
+# ( You can redefine this value in taskwarrior_configuration )
+weekstart=Monday
+
+{{ taskwarrior_configuration }}

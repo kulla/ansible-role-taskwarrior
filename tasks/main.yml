@@ -4,3 +4,10 @@
   with_items:
     - taskwarrior
     - tasksh
+
+- name: Configure taskwarrior
+  template:
+    src: taskrc
+    dest: "{{ taskwarrior_user_dir }}/.taskrc"
+    mode: 0600
+    owner: "{{ taskwarrior_user_id }}"

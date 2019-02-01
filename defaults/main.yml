@@ -1,0 +1,12 @@
+---
+# The user for which taskwarrior shall be configured
+taskwarrior_user_id: "{{ ansible_user_id }}"
+
+# Home directory of the user for which taskwarrior shall be configured
+taskwarrior_user_dir: "/home/{{ taskwarrior_user_id }}"
+
+# Location where taskwarrior shall store its data
+taskwarrior_data_location: "{{ taskwarrior_user_dir }}/.task"
+
+# Configurations for taskwarrior
+taskwarrior_configuration:
