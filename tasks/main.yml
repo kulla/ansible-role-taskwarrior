@@ -1,13 +1,15 @@
 ---
-- name: Install taskwarrior
-  package: name={{ item }} state=present
-  with_items:
-    - taskwarrior
-    - tasksh
+- tags: [taskwarrior]
+  block:
+    - name: Install taskwarrior
+      package: name={{ item }} state=present
+      with_items:
+        - taskwarrior
+        - tasksh
 
-- name: Configure taskwarrior
-  template:
-    src: taskrc
-    dest: "{{ taskwarrior_user_dir }}/.taskrc"
-    mode: 0600
-    owner: "{{ taskwarrior_user_id }}"
+    - name: Configure taskwarrior
+      template:
+        src: taskrc
+        dest: "{{ taskwarrior_user_dir }}/.taskrc"
+        mode: 0600
+        owner: "{{ taskwarrior_user_id }}"
