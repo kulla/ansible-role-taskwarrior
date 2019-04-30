@@ -47,3 +47,6 @@ taskwarrior_client_certificate_dest: >-
 # Destination for client certificate key
 taskwarrior_client_key_dest: >-
   "{{ taskwarrior_config_dir }}/{{ taskwarrior_client_key }}"
+
+# Set to true if a hourly cron job for syncing taskwarrior shall be configured
+taskwarrior_cronjob_sync: false

@@ -13,6 +13,9 @@ The main variables for configuring this role are:
 # (This variable defaults to the value of the variable "ansible_user_id")
 taskwarrior_user_id: "{{ ansible_user_id }}"
 
+# True, iff hourly cronjob for syncing shall be configured
+taskwarrior_cronjob_sync:
+
 # Configuration for taskwarrior
 taskwarrior_configuration:
 ```
@@ -36,6 +39,8 @@ Example Playbook
       color.tag.important=bold white on rgb010
 
       context.work=project:work or +important
+
+    taskwarrior_cronjob_sync: true
 ```
 
 The taskwarrior configuration can also be read from the file using the [file lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/file.html) or from a Jinja template with the [template lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/template.html):

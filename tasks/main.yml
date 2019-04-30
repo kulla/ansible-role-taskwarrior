@@ -57,3 +57,11 @@
           dest: "{{ taskwarrior_client_certificate_dest }}"
         - src: "{{ taskwarrior_client_key }}"
           dest: "{{ taskwarrior_client_key_dest }}"
+
+    - name: Install cron job for syncing taskwarrior
+      cron:
+        name: sync taskwarrior
+        job: task sync
+        user: "{{ taskwarrior_user_id }}"
+        special_time: hourly
+      when: taskwarrior_cronjob_sync
