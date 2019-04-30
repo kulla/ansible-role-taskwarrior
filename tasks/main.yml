@@ -25,3 +25,35 @@
         dest: "{{ taskwarrior_user_dir }}/.taskrc"
         mode: 0600
         owner: "{{ taskwarrior_user_id }}"
+
+    - name: Install certificates for using the taskserver
+      block:
+        - name: Check whether local certificate exists
+          local_action:
+            module: stat
+            path: "{{ item.src }}"
+          register: taskwarrior_local_cert
+
+        - name: Create configuration directory for taskwarrior
+          file:
+            path: "{{ item.dest | dirname }}"
+            state: directory
+            mode: 0700
+            owner: "{{ taskwarrior_user_id }}"
+          when: taskwarrior_local_cert.stat.exists
+
+        - name: Install certificate for using the taskserver
+          copy:
+            src: "{{ item.src }}"
+            dest: "{{ item.dest }}"
+            mode: 0400
+            owner: "{{ taskwarrior_user_id }}"
+          when: taskwarrior_local_cert.stat.exists
+
+      loop:
+        - src: "{{ taskwarrior_server_certificate }}"
+          dest: "{{ taskwarrior_server_certificate_dest }}"
+        - src: "{{ taskwarrior_client_certificate }}"
+          dest: "{{ taskwarrior_client_certificate_dest }}"
+        - src: "{{ taskwarrior_client_key }}"
+          dest: "{{ taskwarrior_client_key_dest }}"
