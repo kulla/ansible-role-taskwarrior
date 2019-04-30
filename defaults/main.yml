@@ -8,6 +8,9 @@ taskwarrior_user_dir: "{{ getent_passwd[taskwarrior_user_id][4] }}"
 # Location where taskwarrior shall store its data
 taskwarrior_data_location: "{{ taskwarrior_user_dir }}/.task"
 
+# Configuration for taskwarrior
+taskwarrior_configuration:
+
 # Base directory for configuration files
 #
 # Default: $XDG_CONFIG_HOME or $HOME/.config/
@@ -44,6 +47,3 @@ taskwarrior_client_certificate_dest: >-
 # Destination for client certificate key
 taskwarrior_client_key_dest: >-
   "{{ taskwarrior_config_dir }}/{{ taskwarrior_client_key }}"
-
-# Configuration for taskwarrior
-taskwarrior_configuration:
