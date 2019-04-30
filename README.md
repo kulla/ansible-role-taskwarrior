@@ -47,7 +47,7 @@ taskwarrior_configuration: "{{ lookup('file', 'my_config.conf') }}"
 Configuration for connecting to a taskserver
 --------------------------------------------
 
-This role automatically looks for certificate files which are needed for connecting to the taskserver and installs them when they are found. You provide them by storing the certificates in the `files` directory (you should protect, for example with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)):
+This role automatically looks for certificate files which are needed for connecting to the taskserver and installs them when they are found. You provide them by storing the certificates in the `files` directory (you should protect them, e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)):
 
 ```
 files
@@ -64,13 +64,15 @@ taskwarrior_client_certificate: taskwarrior_client.cert.pem
 taskwarrior_client_key: taskwarrior_client.key.pem
 ```
 
-This role automatically sets the configuration settings `taskd.ca`, `taskd.key` and `taskd.certificate`. However you need to add the missing configuration settings in the Ansible variable `taskwarrior_configuration`:
+This role automatically sets the configuration settings `taskd.ca`, `taskd.key` and `taskd.certificate`. However you need to add the missing configuration settings for using a taskserver in the Ansible variable `taskwarrior_configuration`:
 
 ```yaml
 taskwarrior_configuration: |
   taskd.server=...
   taskd.credentials=...
 ```
+
+In the taskwarrior documentation you can find more information for [configuring taskwarrior with a taskserver](https://taskwarrior.org/docs/taskserver/taskwarrior.html).
 
 Dependencies and Requirements
 -----------------------------
