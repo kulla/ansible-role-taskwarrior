@@ -7,6 +7,12 @@
         - taskwarrior
         - tasksh
 
+    - name: Gather facts about the user for whom taskwarrior shall be configured
+      getent:
+        database: passwd
+        key: "{{ taskwarrior_user_id }}"
+        split:
+
     - name: Configure taskwarrior
       template:
         src: taskrc
