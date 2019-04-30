@@ -7,7 +7,7 @@
         - taskwarrior
         - tasksh
 
-    - name: Gather facts about the user for whom taskwarrior shall be configured
+    - name: Discover home directory of taskwarrior user
       getent:
         database: passwd
         key: "{{ taskwarrior_user_id }}"
