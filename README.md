@@ -38,6 +38,12 @@ Example Playbook
       context.work=project:work or +important
 ```
 
+The taskwarrior configuration can also be read from the file using the [file lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/file.html) or from a Jinja template with the [template lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/template.html):
+
+```yaml
+taskwarrior_configuration: "{{ lookup('file', 'my_config.conf') }}"
+```
+
 Dependencies and Requirements
 -----------------------------
 
