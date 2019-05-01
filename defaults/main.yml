@@ -38,15 +38,15 @@ taskwarrior_client_key:
 
 # Destination for server certificate
 taskwarrior_server_certificate_dest: >-
-  {{ taskwarrior_config_dir }}/{{ taskwarrior_server_certificate }}
+  {{ taskwarrior_config_dir }}/{{ taskwarrior_server_certificate | basename }}
 
 # Destination for client certificate
 taskwarrior_client_certificate_dest: >-
-  {{ taskwarrior_config_dir }}/{{ taskwarrior_client_certificate }}
+  {{ taskwarrior_config_dir }}/{{ taskwarrior_client_certificate | basename }}
 
 # Destination for client certificate key
 taskwarrior_client_key_dest: >-
-  {{ taskwarrior_config_dir }}/{{ taskwarrior_client_key }}
+  {{ taskwarrior_config_dir }}/{{ taskwarrior_client_key | basename }}
 
 # Set to true if a hourly cron job for syncing taskwarrior shall be configured
 taskwarrior_cronjob_sync: false
