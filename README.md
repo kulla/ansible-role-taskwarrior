@@ -13,7 +13,7 @@ The main variables for configuring this role are:
 # (This variable defaults to the value of the variable "ansible_user_id")
 taskwarrior_user_id: "{{ ansible_user_id }}"
 
-# Set to true, if a hourly cronjob for syncing shall be configured
+# Set to true, if an hourly cronjob for syncing taskwarrior shall be configured
 taskwarrior_cronjob_sync:
 
 # Configuration for taskwarrior
@@ -29,7 +29,7 @@ taskwarrior_client_certificate:
 taskwarrior_client_key:
 ```
 
-There can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). Normally you will not need to use these variables.
+You can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). Normally you will not need to use these.
 
 Example Playbook
 ----------------
@@ -45,6 +45,8 @@ Example Playbook
     taskwarrior_client_certificate: first_last.cert.pem
     taskwarrior_client_key: first_last.key.pem
 
+    taskwarrior_cronjob_sync: true
+
     taskwarrior_configuration: |
       # -- My configuration of taskwarrior --
       weekstart=Sunday
@@ -52,11 +54,9 @@ Example Playbook
       color.tag.important=bold white on rgb010
 
       context.work=project:work or +important
-
-    taskwarrior_cronjob_sync: true
 ```
 
-The taskwarrior configuration can also be read from the file using the [file lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/file.html) or from a Jinja template with the [template lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/template.html):
+The taskwarrior configuration can also be read from a file using the [file lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/file.html) or from a template with the [template lookup plugin](https://docs.ansible.com/ansible/latest/plugins/lookup/template.html):
 
 ```yaml
 taskwarrior_configuration: "{{ lookup('file', 'my_config.conf') }}"
@@ -65,7 +65,7 @@ taskwarrior_configuration: "{{ lookup('file', 'my_config.conf') }}"
 Syncing to a taskserver
 -----------------------
 
-With the following variables you provide the names of certificates which are needed for connecting to a taskserver. If those variables are set, the certificates are copied to the remote machine. Note that you want to protect them properly (e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
+With the following variables you provide the names of certificates which are needed in order to connect to a taskserver. If those variables are set, the certificates are copied to the remote machine. Note that you want to protect them properly (e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
 
 ```yaml
 taskwarrior_server_certificate: taskwarrior_server.cert.pem
@@ -73,7 +73,7 @@ taskwarrior_client_certificate: taskwarrior_client.cert.pem
 taskwarrior_client_key: taskwarrior_client.key.pem
 ```
 
-This role automatically sets the configuration settings `taskd.ca`, `taskd.key` and `taskd.certificate`. However you need to add the missing configuration settings for using a taskserver in the Ansible variable `taskwarrior_configuration`:
+This role automatically sets the configuration settings `taskd.ca`, `taskd.key` and `taskd.certificate`. However you need to add the missing configuration settings for using a taskserver in the variable `taskwarrior_configuration`:
 
 ```yaml
 taskwarrior_configuration: |

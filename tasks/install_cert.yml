@@ -1,4 +1,5 @@
-# Tasks for installing a certificate used for connecting to taskserver
+# Tasks for installing a certificate which are needed in order to connect
+# to a taskserver
 ---
 - name: Create configuration directory for taskwarrior
   file:

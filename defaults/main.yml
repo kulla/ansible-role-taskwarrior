@@ -14,32 +14,26 @@ taskwarrior_configuration:
 # Directory for additional configuration files for taskwarrior
 taskwarrior_config_dir: "{{ taskwarrior_user_dir }}/.config/taskwarrior"
 
-# Name of certificate for the taskserver
-#
-# Used for configuration "taskd.ca"
+# The certificate of the taskserver (used for configuration "taskd.ca")
 taskwarrior_server_certificate:
 
-# Certificate of the client
-#
-# Used for configuration "taskd.certificate"
+# Client's certificate (used for configuration "taskd.certificate")
 taskwarrior_client_certificate:
 
-# Key for client's certificate
-#
-# Used for configuration "taskd.key"
+# Key for client's certificate (used for configuration "taskd.key")
 taskwarrior_client_key:
 
-# Destination for server certificate
+# Destination for the server certificate
 taskwarrior_server_certificate_dest: >-
   {{ taskwarrior_config_dir }}/{{ taskwarrior_server_certificate | basename }}
 
-# Destination for client certificate
+# Destination for the client certificate
 taskwarrior_client_certificate_dest: >-
   {{ taskwarrior_config_dir }}/{{ taskwarrior_client_certificate | basename }}
 
-# Destination for client certificate key
+# Destination for the client key
 taskwarrior_client_key_dest: >-
   {{ taskwarrior_config_dir }}/{{ taskwarrior_client_key | basename }}
 
-# Set to true if a hourly cron job for syncing taskwarrior shall be configured
+# Set to true if an hourly cron job for syncing taskwarrior shall be configured
 taskwarrior_cronjob_sync: false

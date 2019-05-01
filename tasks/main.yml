@@ -21,7 +21,7 @@
         owner: "{{ taskwarrior_user_id }}"
 
     - name: Install certificates for using the taskserver
-      include: install_cert.yml
+      include_tasks: install_cert.yml
       loop:
         - src: "{{ taskwarrior_server_certificate }}"
           dest: "{{ taskwarrior_server_certificate_dest }}"
