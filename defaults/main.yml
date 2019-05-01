@@ -11,15 +11,8 @@ taskwarrior_data_location: "{{ taskwarrior_user_dir }}/.task"
 # Configuration for taskwarrior
 taskwarrior_configuration:
 
-# Base directory for configuration files
-#
-# Default: $XDG_CONFIG_HOME or $HOME/.config/
-taskwarrior_xdg_config_home: >-
-  {{ taskwarrior_xdg_config_home_shell.stdout |
-     default(taskwarrior_user_dir ~ '/.config', true) }}
-
 # Directory for additional configuration files for taskwarrior
-taskwarrior_config_dir: "{{ taskwarrior_xdg_config_home }}/taskwarrior"
+taskwarrior_config_dir: "{{ taskwarrior_user_dir }}/.config/taskwarrior"
 
 # Name of certificate for the taskserver
 #

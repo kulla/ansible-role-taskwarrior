@@ -13,12 +13,6 @@
         key: "{{ taskwarrior_user_id }}"
         split:
 
-    - name: Read XDG_CONFIG_HOME of taskwarrior user
-      shell: echo $XDG_CONFIG_HOME
-      become: yes
-      become_user: "{{ taskwarrior_user_id }}"
-      register: taskwarrior_xdg_config_home_shell
-
     - name: Configure taskwarrior
       template:
         src: taskrc
