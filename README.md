@@ -13,11 +13,20 @@ The main variables for configuring this role are:
 # (This variable defaults to the value of the variable "ansible_user_id")
 taskwarrior_user_id: "{{ ansible_user_id }}"
 
-# True, iff hourly cronjob for syncing shall be configured
+# Set to true, if a hourly cronjob for syncing shall be configured
 taskwarrior_cronjob_sync:
 
 # Configuration for taskwarrior
 taskwarrior_configuration:
+
+# Name of taskserver's certificate (taskd.ca)
+taskwarrior_server_certificate:
+
+# Name of client's certifiacte (taskd.certificate)
+taskwarrior_client_certificate:
+
+# Name of client's key (taskd.key)
+taskwarrior_client_key:
 ```
 
 There can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). Normally you will not need to use these variables.
@@ -31,6 +40,10 @@ Example Playbook
      - taskwarrior
   vars:
     taskwarrior_user_id: myusername
+
+    taskwarrior_server_certificate: ca.cert.pem
+    taskwarrior_client_certificate: first_last.cert.pem
+    taskwarrior_client_key: first_last.key.pem
 
     taskwarrior_configuration: |
       # -- My configuration of taskwarrior --
@@ -49,19 +62,10 @@ The taskwarrior configuration can also be read from the file using the [file loo
 taskwarrior_configuration: "{{ lookup('file', 'my_config.conf') }}"
 ```
 
-Configuration for connecting to a taskserver
---------------------------------------------
+Syncing to a taskserver
+-----------------------
 
-This role automatically looks for certificate files which are needed for connecting to the taskserver and installs them when they are found. You provide them by storing the certificates in the `files` directory (you should protect them, e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html)):
-
-```
-files
-├── taskwarrior_server.cert.pem # Certificate of the server
-├── taskwarrior_client.cert.pem # Certificate of the client
-└── taskwarrior_client.key.pem  # Private key of client's certificate
-```
-
-The names of those files are controlled by the following variables:
+With the following variables you provide the names of certificates which are needed for connecting to a taskserver. If those variables are set, the certificates are copied to the remote machine. Note that you want to protect them properly (e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
 
 ```yaml
 taskwarrior_server_certificate: taskwarrior_server.cert.pem

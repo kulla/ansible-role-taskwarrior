@@ -24,17 +24,17 @@ taskwarrior_config_dir: "{{ taskwarrior_xdg_config_home }}/taskwarrior"
 # Name of certificate for the taskserver
 #
 # Used for configuration "taskd.ca"
-taskwarrior_server_certificate: taskwarrior_server.cert.pem
+taskwarrior_server_certificate:
 
 # Certificate of the client
 #
 # Used for configuration "taskd.certificate"
-taskwarrior_client_certificate: taskwarrior_client.cert.pem
+taskwarrior_client_certificate:
 
 # Key for client's certificate
 #
 # Used for configuration "taskd.key"
-taskwarrior_client_key: taskwarrior_client.key.pem
+taskwarrior_client_key:
 
 # Destination for server certificate
 taskwarrior_server_certificate_dest: >-
