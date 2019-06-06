@@ -4,16 +4,16 @@ data.location={{ taskwarrior_data_location }}
 # ( You can redefine this value in taskwarrior_configuration )
 weekstart=Monday
 
-{% if taskwarrior_server_certificate -%}
-  taskd.ca={{ taskwarrior_server_certificate_dest }}
+{% if taskwarrior_ca_certificate -%}
+  taskd.ca={{ taskwarrior_ca_certificate_dest }}/{{ taskwarrior_ca_certificate | basename }}
 {%- endif %}
 
 {% if taskwarrior_client_certificate -%}
-  taskd.certificate={{ taskwarrior_client_certificate_dest }}
+  taskd.certificate={{ taskwarrior_client_certificate_dest }}/{{ taskwarrior_client_certificate | basename }}
 {%- endif %}
 
 {% if taskwarrior_client_key -%}
-  taskd.key={{ taskwarrior_client_key_dest }}
+  taskd.key={{ taskwarrior_client_key_dest }}/{{ taskwarrior_client_key | basename }}
 {%- endif %}
 
 {{ taskwarrior_configuration }}
