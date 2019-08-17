@@ -97,4 +97,4 @@ To the extent possible under law, I waive all copyright and related or neighbori
 Author Information
 ------------------
 
-[Stephan Kulla](http://kulla.me/)
+The main author is [Stephan Kulla](http://kulla.me/). Thanks to [nkakouros](https://github.com/nkakouros) for his contributions.
