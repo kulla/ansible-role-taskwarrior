@@ -6,7 +6,7 @@ Installs and configures the task management tool [taskwarrior](https://taskwarri
 Role Variables
 --------------
 
-The main variables for configuring this role are:
+The variables for configuring this role are:
 
 ```yaml
 # Defines for which user taskwarrior shall be configured
@@ -14,13 +14,14 @@ The main variables for configuring this role are:
 taskwarrior_user_id: "{{ ansible_user_id }}"
 
 # Set to true, if an hourly cronjob for syncing taskwarrior shall be configured
+# (The default value is "false")
 taskwarrior_cronjob_sync:
 
 # Configuration for taskwarrior
 taskwarrior_configuration:
 
 # Name of taskserver's certificate (taskd.ca)
-taskwarrior_server_certificate:
+taskwarrior_ca_certificate:
 
 # Name of client's certifiacte (taskd.certificate)
 taskwarrior_client_certificate:
@@ -29,7 +30,7 @@ taskwarrior_client_certificate:
 taskwarrior_client_key:
 ```
 
-You can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). Normally you will not need to use these.
+You can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). Normally you will not need to use them.
 
 Example Playbook
 ----------------
@@ -41,7 +42,7 @@ Example Playbook
   vars:
     taskwarrior_user_id: myusername
 
-    taskwarrior_server_certificate: ca.cert.pem
+    taskwarrior_ca_certificate: ca.cert.pem
     taskwarrior_client_certificate: first_last.cert.pem
     taskwarrior_client_key: first_last.key.pem
 
@@ -68,9 +69,9 @@ Syncing to a taskserver
 With the following variables you provide the names of certificates which are needed in order to connect to a taskserver. If those variables are set, the certificates are copied to the remote machine. Note that you want to protect them properly (e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
 
 ```yaml
-taskwarrior_server_certificate: taskwarrior_server.cert.pem
-taskwarrior_client_certificate: taskwarrior_client.cert.pem
-taskwarrior_client_key: taskwarrior_client.key.pem
+taskwarrior_ca_certificate: ca.cert.pem
+taskwarrior_client_certificate: first_last.cert.pem
+taskwarrior_client_key: first_last.key.pem
 ```
 
 This role automatically sets the configuration settings `taskd.ca`, `taskd.key` and `taskd.certificate`. However you need to add the missing configuration settings for using a taskserver in the variable `taskwarrior_configuration`:
