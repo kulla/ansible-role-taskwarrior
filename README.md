@@ -30,7 +30,7 @@ taskwarrior_client_certificate:
 taskwarrior_client_key:
 ```
 
-You can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). Normally you will not need to use them.
+You can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). However, these variables might change in the future since they aren't considered part of the officially supported variables.
 
 Example Playbook
 ----------------
