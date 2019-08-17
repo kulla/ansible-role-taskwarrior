@@ -5,15 +5,15 @@ data.location={{ taskwarrior_data_location }}
 weekstart=Monday
 
 {% if taskwarrior_ca_certificate -%}
-  taskd.ca={{ taskwarrior_ca_certificate_dest }}/{{ taskwarrior_ca_certificate | basename }}
+  taskd.ca={{ taskwarrior_config_dir }}/{{ taskwarrior_ca_certificate | basename }}
 {%- endif %}
 
 {% if taskwarrior_client_certificate -%}
-  taskd.certificate={{ taskwarrior_client_certificate_dest }}/{{ taskwarrior_client_certificate | basename }}
+  taskd.certificate={{ taskwarrior_config_dir }}/{{ taskwarrior_client_certificate | basename }}
 {%- endif %}
 
 {% if taskwarrior_client_key -%}
-  taskd.key={{ taskwarrior_client_key_dest }}/{{ taskwarrior_client_key | basename }}
+  taskd.key={{ taskwarrior_config_dir }}/{{ taskwarrior_client_key | basename }}
 {%- endif %}
 
 {{ taskwarrior_configuration }}

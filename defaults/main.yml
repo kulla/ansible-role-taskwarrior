@@ -29,14 +29,5 @@ taskwarrior_client_certificate: ~
 # Key for client's certificate (used for configuration "taskd.key")
 taskwarrior_client_key: ~
 
-# Destination for the server certificate
-taskwarrior_ca_certificate_dest: "{{ taskwarrior_config_dir }}/"
-
-# Destination for the client certificate
-taskwarrior_client_certificate_dest: "{{ taskwarrior_config_dir }}/"
-
-# Destination for the client key
-taskwarrior_client_key_dest: "{{ taskwarrior_config_dir }}/"
-
 # Set to true if an hourly cron job for syncing taskwarrior shall be configured
 taskwarrior_cronjob_sync: false

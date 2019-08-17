@@ -21,11 +21,11 @@
       include_tasks: install_cert.yml
       loop:
         - src: "{{ taskwarrior_ca_certificate }}"
-          dest: "{{ taskwarrior_ca_certificate_dest }}"
+          dest: "{{ taskwarrior_config_dir }}"
         - src: "{{ taskwarrior_client_certificate }}"
-          dest: "{{ taskwarrior_client_certificate_dest }}"
+          dest: "{{ taskwarrior_config_dir }}"
         - src: "{{ taskwarrior_client_key }}"
-          dest: "{{ taskwarrior_client_key_dest }}"
+          dest: "{{ taskwarrior_config_dir }}"
 
     - name: Install cron job for syncing taskwarrior
       cron:
