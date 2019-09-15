@@ -3,7 +3,7 @@
 ---
 - name: Create configuration directory for taskwarrior
   file:
-    path: "{{ item.dest | dirname }}"
+    path: "{{ item.dest }}"
     state: directory
     mode: 0o700
     owner: "{{ taskwarrior_user_id }}"
