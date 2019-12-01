@@ -30,7 +30,8 @@ taskwarrior_client_certificate:
 taskwarrior_client_key:
 ```
 
-You can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml). However, these variables might change in the future since they aren't considered part of the officially supported variables.
+You can find more variables for a more specialized configuration in [`defaults/main.yml`](defaults/main.yml).
+However, these variables might change in the future since they aren't considered part of the officially supported variables.
 
 Example Playbook
 ----------------
@@ -66,7 +67,8 @@ taskwarrior_configuration: "{{ lookup('file', 'my_config.conf') }}"
 Syncing to a taskserver
 -----------------------
 
-With the following variables you provide the names of certificates which are needed in order to connect to a taskserver. If those variables are set, the certificates are copied to the remote machine. Note that you want to protect them properly (e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
+With the following variables you provide the names of certificates which are needed in order to connect to a taskserver.
+If those variables are set, the certificates are copied to the remote machine. Note that you want to protect them properly (e.g. with [Ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html):
 
 ```yaml
 taskwarrior_ca_certificate: ca.cert.pem
@@ -74,7 +76,8 @@ taskwarrior_client_certificate: first_last.cert.pem
 taskwarrior_client_key: first_last.key.pem
 ```
 
-This role automatically sets the configuration settings `taskd.ca`, `taskd.key` and `taskd.certificate`. However you need to add the missing configuration settings for using a taskserver in the variable `taskwarrior_configuration`:
+This role automatically sets the configuration settings `taskd.ca`, `taskd.key` and `taskd.certificate`.
+However you need to add the missing configuration settings for using a taskserver in the variable `taskwarrior_configuration`:
 
 ```yaml
 taskwarrior_configuration: |
@@ -92,7 +95,8 @@ This role has no dependencies or requirements.
 License
 -------
 
-To the extent possible under law, I waive all copyright and related or neighboring rights to this software stored under [https://github.com/kulla/ansible-role-taskwarrior](https://github.com/kulla/ansible-role-taskwarrior). Thus, I publish this software under the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/deed.en). This software is published from Germany.
+To the extent possible under law, I waive all copyright and related or neighboring rights to this software stored under [https://github.com/kulla/ansible-role-taskwarrior](https://github.com/kulla/ansible-role-taskwarrior).
+Thus, I publish this software under the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/deed.en). This software is published from Germany.
 
 Author Information
 ------------------
