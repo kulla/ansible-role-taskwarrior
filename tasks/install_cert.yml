@@ -7,7 +7,7 @@
     state: directory
     mode: 0o700
     owner: "{{ taskwarrior_user_id }}"
-  when: item.src
+  when: item.src is defined
 
 - name: Install certificate for using the taskserver
   copy:
@@ -15,4 +15,4 @@
     dest: "{{ item.dest }}"
     mode: 0o400
     owner: "{{ taskwarrior_user_id }}"
-  when: item.src
+  when: item.src is defined
